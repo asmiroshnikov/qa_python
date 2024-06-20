@@ -25,63 +25,55 @@ class TestBooksCollector:
 
 
 
-class TestBooksCollector:
-    def test_add_new_book():
+    def test_add_new_book(self):
         collector = BooksCollector()
         collector.add_new_book("Book1")
         assert "Book1" in collector.get_books_genre()
 
 
-class TestBooksCollector:
-    def test_set_book_genre():
+    def test_set_book_genre(self):
         collector = BooksCollector()
         collector.add_new_book("Book2")
         collector.set_book_genre("Book2", "Фантастика")
         assert collector.get_book_genre("Book2") == "Фантастика"
 
 
-class TestBooksCollector:
-    def test_get_book_genre():
+    def test_get_book_genre(self):
         collector = BooksCollector()
         collector.add_new_book("Book3")
         assert collector.get_book_genre("Book3") == ""
 
 
-class TestBooksCollector:
-    def test_get_books_with_specific_genre():
+    def test_get_books_with_specific_genre(self):
         collector = BooksCollector()
         collector.add_new_book("AdventureBook")
         collector.set_book_genre("AdventureBook", "Фэнтези")
         assert collector.get_books_with_specific_genre("Фэнтези") == ["AdventureBook"]
 
 
-class TestBooksCollector:
-    def test_get_books_genre():
+    def test_get_books_genre(self):
         collector = BooksCollector()
         collector.add_new_book("Book1")
         collector.add_new_book("Book2")
         assert collector.get_books_genre() == {"Book1": "", "Book2": ""}
 
 
-class TestBooksCollector:
-    def test_getbooks_for_children():
+    def test_getbooks_for_children(self):
         collector = BooksCollector()
-        collector.addnewbook("ChildrenBook1")
-        collector.addnewbook("AdultBook")
-        collector.setbookgenre("ChildrenBook1", "Детективы")
-        assert "AdultBook" not in collector.getbooksforchildren()
+        collector.add_new_book("ChildrenBook1")
+        collector.add_new_book("AdultBook")
+        collector.set_book_genre("ChildrenBook1", "Детективы")
+        assert "AdultBook" not in collector.get_books_for_children()
 
 
-class TestBooksCollector:
-    def test_add_book_in_favorites():
+    def test_add_book_in_favorites(self):
         collector = BooksCollector()
-        collector.addnewbook("MyFavoriteBook")
-        collector.addbookinfavorites("MyFavoriteBook")
-        assert collector.getlistoffavoritesbooks() == ["MyFavoriteBook"]
+        collector.add_new_book("MyFavoriteBook")
+        collector.add_book_in_favorites("MyFavoriteBook")
+        assert collector.get_list_of_favorites_books() == ["MyFavoriteBook"]
 
 
-class TestBooksCollector:
-    def test_delete_book_from_favorites():
+    def test_delete_book_from_favorites(self):
         collector = BooksCollector()
         collector.add_new_book("BookToRemoveFromFavorites")
         collector.add_book_in_favorites("BookToRemoveFromFavorites")
@@ -89,8 +81,7 @@ class TestBooksCollector:
         assert collector.get_list_of_favorites_books() == []
 
 
-class TestBooksCollector:
-    def test_get_list_of_favorites_books():
+    def test_get_list_of_favorites_books(self):
         collector = BooksCollector()
         collector.add_new_book("Favorite1")
         collector.add_new_book("Favorite2")
